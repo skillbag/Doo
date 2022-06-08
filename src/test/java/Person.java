@@ -1,44 +1,37 @@
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+import static org.testng.Assert.*;
 
 
 public class Person {
-    public static boolean isTeenager(int age, int age2, int age3) {
-        boolean result;
-        if(age < 19) {
-            result = true;
-        }
-        else {
-            result = false;
-        }
-        return result;
+
+
+    public void currentTime() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
     }
 
     @BeforeClass
     void beforeClass() {
         System.out.println("Before class");
+        currentTime();
     }
+
     @AfterClass
     void afterClass() {
         System.out.println("AfterClass");
+        currentTime();
     }
-    @DataProvider(name = "Teenager")
-    Object[][] dataProvider() {
-        return new Object[][]{
-                {1, 19, 22},
 
-        };
-    }
-    @Test(dataProvider = "teenager")
-    public void agebool(int age1 , int age2, int age3){
-            boolean result = Person.isTeenager(age1, age2, age3);
-
+    @Test()
+    void isTeen() {
+        boolean result = PersonTest.isTeenager(13);
         System.out.println(result);
+        assertTrue(result);
     }
-
-
-
 }
