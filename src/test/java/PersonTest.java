@@ -34,7 +34,6 @@ public class PersonTest {
         boolean result = Person.isTeenager(13);
         System.out.println(result);
         assertTrue(result);
-
     }
 }
 
