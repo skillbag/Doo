@@ -27,7 +27,6 @@ public class PersonTest {
         System.out.println("AfterClass");
         currentTime();
     }
-
     @Test()
     void isTeenager (){
         boolean result = Person.isTeenager(13);
