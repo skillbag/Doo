@@ -28,7 +28,6 @@ public class PersonTest {
         currentTime();
     }
 
-
     @Test()
     void isTeenager (){
         boolean result = Person.isTeenager(13);
