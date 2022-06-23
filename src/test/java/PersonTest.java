@@ -3,11 +3,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-public class PersonTest {
 
+public class PersonTest {
 
     public void currentTime() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss");
@@ -27,10 +27,11 @@ public class PersonTest {
         currentTime();
     }
     @Test()
-    void isTeenager (){
-        boolean result = Person.isTeenager(13);
+    public void isTeenager (){
+        boolean result = Person.isTeenager(15);
         System.out.println(result);
         assertTrue(result);
     }
+
 }
 
