@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 import static org.openqa.selenium.Keys.ENTER;
 
-public class StepDefenitions {
+    public class StepDefenitions {
     public static final WebDriver webDriver;
     private static final Inc inc;
 
