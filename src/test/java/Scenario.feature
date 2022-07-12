@@ -1,11 +1,13 @@
-Feature: Find restaurant
+Feature: Find restaurant and put the pizza in the basket and account
   #Позитивный сценарий
-  Scenario: chose restaurant city
+  Scenario: chose restaurant city and put on basket
     Given url of restaurant
     Then chose city 'Москва'
-   And assert that chose city is 'Москва'
+    And click on basket
 #Негативный сценарий
-  Scenario: chose absent city
+  Scenario: chose restaurant city log into your account
     Given url of restaurant
-    Then chose city 'Балтимор'
- And assert that user got message 'Пиццерия в этом городе еще не открылась'
+    Then chose city 'Москва'
+    And click to login to your account
+    And keep a phone number
+

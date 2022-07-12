@@ -3,8 +3,10 @@ package ru.dodopiza;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -16,7 +18,7 @@ import static org.openqa.selenium.Keys.ENTER;
 
 public class StepDefenitions {
     public static final WebDriver webDriver;
-    private static String url = "https://dodopizza.ru/";
+    private static final Inc inc;
 
 
 
@@ -25,36 +27,33 @@ public class StepDefenitions {
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        inc = new Inc(webDriver);
+    }
 
-}
     @Given("url of restaurant")
     public void UrlOfRestaurant() {
-        webDriver.get(url);
+        inc.go();
     }
 
     @Then("chose city 'Москва'")
     public void ChoseCityMoscow() {
-        webDriver.findElement(By.className("locality-selector-popup__search-input")).sendKeys("Москва", ENTER);
-    }
-    @And("assert that chose city is 'Москва'")
-    public void AssertThatChoseCityIsMoscow(String expected) {
-        final var actual = webDriver.findElement(By.id("header__about-slogan-text_link")).getText();
-        assertEquals(expected, actual);
+    inc.searchCity();
     }
 
-    @Then("chose city 'Балтимор'")
-    public void ChoseCityIsBaltimor () {
-        webDriver.findElement(By.className("locality-selector-popup__search-input")).sendKeys("Балтимор", ENTER);
-
-    }
-
-    @And("assert that user got message 'Пиццерия в этом городе еще не открылась'")
-    public void AssertThatUserGotMessage (String error) {
-        final var actual =  webDriver.findElement(By.className("locality-selector-popup__table-empty-text")).getText();
-        assertEquals(error, actual);
-    }
+    @And("click on basket")
+    public void PutOnBasket() {
+    inc.clickBascet();
     }
 
 
+    @And("click to login to your account")
+    public void ClickToLoginToYourAccount() {
+        inc.clickAccount();
+    }
+    @And("keep a phone number")
+    public void KeepPhoneNumber() {
+        inc.phoneNumber();
+    }
+}
 
 
